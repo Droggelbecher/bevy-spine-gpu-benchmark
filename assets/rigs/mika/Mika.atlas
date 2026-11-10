@@ -1,0 +1,66 @@
+Mika.png
+size:582,269
+filter:Linear,Linear
+pma:true
+Arm L
+bounds:366,8,30,89
+Arm R
+bounds:491,51,28,88
+rotate:90
+Augen
+bounds:398,19,90,29
+offsets:2,0,93,29
+Augen geschlossen
+bounds:398,50,91,29
+offsets:1,0,93,29
+Button
+bounds:398,86,11,11
+offsets:0,0,11,12
+Hand L
+bounds:564,167,16,25
+Mantel L
+bounds:2,31,57,134
+rotate:90
+Mantel R
+bounds:2,4,25,122
+rotate:90
+brow_l
+bounds:564,194,35,13
+offsets:1,1,37,14
+rotate:90
+brow_r
+bounds:564,231,36,16
+offsets:0,0,36,17
+rotate:90
+ear
+bounds:237,16,21,23
+offsets:2,1,23,25
+eye_r
+bounds:228,96,1,1
+hair
+bounds:228,99,183,168
+hand_r
+bounds:449,3,14,21
+rotate:90
+hat
+bounds:2,90,224,177
+headshape
+bounds:413,81,149,186
+offsets:1,2,150,189
+leg L
+bounds:265,16,35,98
+rotate:90
+leg R
+bounds:138,11,28,97
+rotate:90
+mouth
+bounds:398,8,33,9
+neck
+bounds:138,41,47,125
+rotate:90
+nose
+bounds:433,2,14,15
+offsets:1,0,16,17
+shirt
+bounds:265,53,44,99
+rotate:90

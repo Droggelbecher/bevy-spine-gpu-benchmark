@@ -1,0 +1,59 @@
+Ella_c.png
+size:703,269
+filter:Linear,Linear
+pma:true
+Arm L
+bounds:411,127,43,140
+Arm R
+bounds:361,125,48,142
+Auge li
+bounds:475,8,47,36
+offsets:1,0,48,36
+Auge li geschlossen
+bounds:383,2,50,33
+offsets:0,0,51,33
+Auge re
+bounds:524,13,41,34
+offsets:1,0,42,34
+Auge re geschlossen
+bounds:435,2,38,33
+offsets:0,0,39,33
+Augenbraue Li
+bounds:480,49,49,18
+offsets:1,1,51,20
+Augenbraue R
+bounds:439,46,39,21
+offsets:1,1,41,23
+Bein L
+bounds:118,3,22,110
+Bein R
+bounds:94,2,22,111
+Haare L
+bounds:265,116,94,151
+offsets:1,0,96,151
+Haare R
+bounds:383,37,54,86
+offsets:0,0,55,87
+Hals
+bounds:248,9,30,104
+offsets:3,2,33,106
+Hut
+bounds:456,142,245,125
+offsets:2,2,249,129
+Kleid
+bounds:2,14,90,253
+Kopf
+bounds:94,115,169,152
+offsets:2,1,173,153
+Kragen
+bounds:142,4,104,109
+offsets:1,1,105,110
+Mund
+bounds:2,3,34,9
+offsets:1,1,36,11
+Pickaxe
+bounds:280,2,101,112
+offsets:1,2,103,115
+Unterteil Hut
+bounds:456,69,245,71
+offsets:0,1,248,74

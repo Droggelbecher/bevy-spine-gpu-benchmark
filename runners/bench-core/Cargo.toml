@@ -1,0 +1,14 @@
+[package]
+name = "bench-core"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Bevy-independent shared library for the Spine benchmark runners"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+
+# Standalone: never part of a parent workspace.
+[workspace]

@@ -1,0 +1,9 @@
+Copyright (c) 2025-2026 kiek ma games GmbH. All rights reserved.
+
+The art in this directory (Spine skeletons, atlases and images, including the
+generated variants ella_b, ella_c and ella_bezier) is NOT covered by the
+MIT / Apache-2.0 license of the code in this repository.
+
+You may use it, unmodified, only to build and run this repository's
+benchmarks and tests. Any other use, copying, modification or redistribution
+requires prior written permission from kiek ma games GmbH.

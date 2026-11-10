@@ -1,0 +1,24 @@
+[package]
+name = "bench-spine2d"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+rust-version = "1.95"
+
+[[bin]]
+name = "bench-spine2d"
+path = "src/main.rs"
+
+[dependencies]
+bevy = "=0.19.0"
+spine2d-bevy = { path = "vendor/spine2d-bevy" }
+spine2d = { version = "=0.5.0", features = ["json", "binary"] }
+bench-core = { path = "../bench-core" }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+debug = 1
+
+# Standalone: never part of a parent workspace.
+[workspace]

@@ -1,0 +1,12 @@
+[package]
+name = "spine2d-bevy"
+version = "0.5.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT OR Apache-2.0"
+description = "Bevy integration backend for the spine2d runtime (vendored v0.5.0, +track_time patch)"
+
+[dependencies]
+bevy = "0.19.0"
+spine2d = { version = "=0.5.0", features = ["json", "binary"] }
+anyhow = "1.0"

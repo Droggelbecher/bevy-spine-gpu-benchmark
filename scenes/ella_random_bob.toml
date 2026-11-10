@@ -1,0 +1,9 @@
+rig = "ella"
+animations = ["idle_l", "idle_r", "walk_l", "walk_r"]
+anim_mode = "random"
+onscreen = 1000
+offscreen = 0
+scale = 0.5
+seed = 42
+draw_order = "any"
+motion = "bob"

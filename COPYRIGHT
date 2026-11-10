@@ -1,0 +1,13 @@
+Copyright (c) 2026 Henning Hasemann (code)
+Copyright (c) 2025-2026 kiek ma games GmbH (art)
+
+Everything in this repository is licensed under either of the Apache License,
+Version 2.0 (LICENSE-APACHE) or the MIT license (LICENSE-MIT), at your option,
+EXCEPT:
+
+assets/          Spine skeletons, atlases and images (the art), including the
+assets-spine43/  generated variants (ella_b, ella_c, ella_bezier, Spine 4.3
+                 copies). All rights reserved by kiek ma games GmbH. They may
+                 only be used, unmodified, to build and run this repository's
+                 benchmarks and tests. See assets/LICENSE. They are NOT covered
+                 by the MIT / Apache-2.0 license.

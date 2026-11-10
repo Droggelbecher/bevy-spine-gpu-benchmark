@@ -1,0 +1,21 @@
+[package]
+name = "bench-bevy-spine"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "bench-bevy-spine"
+path = "src/main.rs"
+
+[dependencies]
+bench-core = { path = "../bench-core" }
+bevy_spine = { git = "https://github.com/jabuwu/bevy_spine", rev = "c57de4915b3aab447dcdce4279f86930bfb7a5a0" }
+bevy = { version = "=0.19.0", default-features = false, features = ["2d"] }
+
+[workspace]
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+debug = 1
