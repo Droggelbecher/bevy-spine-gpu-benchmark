@@ -354,7 +354,7 @@ fn skin_vertex(vertex: &VertexInfo, bones: &[GlobalBoneTransform]) -> Vec2 {
         .map(|i| {
             let bone = &bones[vertex.bone_indices[i] as usize];
             let bind = Vec2::new(vertex.bind_positions_x[i], vertex.bind_positions_y[i]);
-            (bone.matrix2 * bind + bone.translation) * vertex.bone_weights[i]
+            (bone.matrix2() * bind + bone.translation) * vertex.bone_weights[i]
         })
         .sum()
 }
@@ -443,10 +443,10 @@ fn compare_sample(rig: &Rig, animation: &str, t: f32, stats: &mut Stats) {
         let gpu = &bones[index];
         // Spine's [a b; c d] is column major (a, c), (b, d) in glam
         let matrix_error = [
-            (gpu.matrix2.x_axis.x - bone.a()).abs(),
-            (gpu.matrix2.y_axis.x - bone.b()).abs(),
-            (gpu.matrix2.x_axis.y - bone.c()).abs(),
-            (gpu.matrix2.y_axis.y - bone.d()).abs(),
+            (gpu.x_axis.x - bone.a()).abs(),
+            (gpu.y_axis.x - bone.b()).abs(),
+            (gpu.x_axis.y - bone.c()).abs(),
+            (gpu.y_axis.y - bone.d()).abs(),
         ]
         .into_iter()
         .fold(0.0, f32::max);

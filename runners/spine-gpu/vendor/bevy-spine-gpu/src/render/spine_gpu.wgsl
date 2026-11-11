@@ -38,11 +38,11 @@ struct InstanceInfo {
     color: vec4<f32>,
 }
 
-// Keep in sync with GlobalBoneTransform in instance_infos.rs. 32 bytes.
+// Keep in sync with GlobalBoneTransform in instance_infos.rs. 24 bytes (alignment 8), so the
+// array stride of `bones` is 24 too.
 struct BoneTransform {
     scale: mat2x2<f32>,
     translation: vec2<f32>,
-    _pad: vec2<f32>
 }
 
 // Instance = Skeleton

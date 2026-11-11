@@ -24,7 +24,7 @@ pub(crate) fn debug_draw_bones(
             gizmos.circle_2d(bone.translation, r, Color::WHITE);
             gizmos.line_2d(
                 bone.translation,
-                bone.translation + bone.matrix2 * vec2(r, 0.0),
+                bone.translation + bone.matrix2() * vec2(r, 0.0),
                 Color::WHITE,
             );
         }

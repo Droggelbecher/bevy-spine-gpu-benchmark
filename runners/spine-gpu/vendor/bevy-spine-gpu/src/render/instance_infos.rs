@@ -44,12 +44,19 @@ mod shader_types {
         pub(crate) color: Vec4,
     }
 
+    /// The world transform of one bone, `bones[bone_offset + i]` in the shader.
+    /// Keep in sync with `BoneTransform` in spine_gpu.wgsl.
+    ///
+    /// 24 bytes. The 2x2 matrix is stored as its two columns rather than a glam `Mat2`: `Mat2` is a
+    /// 16-byte aligned SIMD type, which would round the struct up to 32 bytes (8 of them padding,
+    /// uploaded every frame for every bone). The WGSL side reads the same bytes as
+    /// `mat2x2<f32>` + `vec2<f32>` (alignment 8, so the storage array stride is 24 as well).
     #[derive(Clone, Copy, Default, Zeroable, Debug, ShaderType, Pod)]
     #[repr(C)]
     pub(crate) struct GlobalBoneTransform {
-        pub(crate) matrix2: Mat2,
+        pub(crate) x_axis: Vec2,
+        pub(crate) y_axis: Vec2,
         pub(crate) translation: Vec2,
-        pub(crate) _pad: Vec2,
     }
 }
 
@@ -57,9 +64,9 @@ pub(crate) use shader_types::{GlobalBoneTransform, InstanceInfo};
 
 // The sizes of the buffer elements, which the WGSL structs `InstanceInfo` and `BoneTransform` in
 // spine_gpu.wgsl must match: `vec3<u32>` + `u32` + `vec4<f32>` (align 16), and `mat2x2<f32>` +
-// `vec2<f32>` + padding.
+// `vec2<f32>` (align 8).
 const _: () = assert!(size_of::<InstanceInfo>() == 32);
-const _: () = assert!(size_of::<GlobalBoneTransform>() == 32);
+const _: () = assert!(size_of::<GlobalBoneTransform>() == 24);
 
 pub(crate) const HEADER_SIZE: usize = size_of::<InstanceInfo>();
 pub(crate) const BONE_SIZE: usize = size_of::<GlobalBoneTransform>();
@@ -216,16 +223,23 @@ impl InstanceInfos {
 impl From<Affine2> for GlobalBoneTransform {
     fn from(value: Affine2) -> Self {
         Self {
-            matrix2: value.matrix2,
+            x_axis: value.matrix2.x_axis,
+            y_axis: value.matrix2.y_axis,
             translation: value.translation,
-            _pad: Vec2::ZERO,
         }
+    }
+}
+
+impl GlobalBoneTransform {
+    /// The rotation / scale / shear part
+    pub(crate) fn matrix2(&self) -> Mat2 {
+        Mat2::from_cols(self.x_axis, self.y_axis)
     }
 }
 
 impl From<GlobalBoneTransform> for Affine2 {
     fn from(value: GlobalBoneTransform) -> Self {
-        Affine2::from_mat2_translation(value.matrix2, value.translation)
+        Affine2::from_mat2_translation(value.matrix2(), value.translation)
     }
 }
 
@@ -611,7 +625,7 @@ mod tests {
     fn header_matches_wgsl_layout() {
         assert_eq!(HEADER_SIZE, 32);
         assert_eq!(BONE_OFFSET_FIELD, 12);
-        assert_eq!(BONE_SIZE, 32);
+        assert_eq!(BONE_SIZE, 24);
         // The sizes WGSL gives the structs, which are the strides of the storage buffers
         assert_eq!(InstanceInfo::min_size().get() as usize, HEADER_SIZE);
         assert_eq!(GlobalBoneTransform::min_size().get() as usize, BONE_SIZE);

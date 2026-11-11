@@ -15,7 +15,7 @@ A GPU-driven [Spine2D](https://esotericsoftware.com/) renderer for [Bevy](https:
 - Animation sampling (bones, attachments, events, cross-fades) runs on the CPU; posed bones are
   written straight into the packed instance data.
 
-<!-- TODO benchmark link -->
+For benchmarks see [bevy-spine-gpu-benchmark](https://github.com/Droggelbecher/bevy-spine-gpu-benchmark)
 
 ## Status
 
